@@ -7,9 +7,8 @@ const ActivitySchema = new Schema ({
     name: String,
     location: String,
     picture: String,
-    description: String,
-    reviews: [ReviewSchema]
+    description: String
 }, {timestamps: true})
 
 
-module.exports = mongoose.model('Activity', ActivitySchema)
+module.exports = ActivitySchema

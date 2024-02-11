@@ -20,7 +20,7 @@ async function index(req,res,next) {
 // Activities CREATE ACTION
 async function create(req,res,next) {
   try {
-    // create new person
+    // create new activity
     res.json(await Activity.create(req.body));
   } catch (error) {
     //send error
