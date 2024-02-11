@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const ridesCtrl = require('../controllers/')
+const activitiesCtrl = require('../controllers/activities')
 
-router.get("/", ridesCtrl.index);
+router.get("/", activitiesCtrl.index);
 
-router.post("/", ridesCtrl.create);
+router.post("/", activitiesCtrl.create);
 
-router.get("/:id", ridesCtrl.show);
+router.get("/:id", activitiesCtrl.show);
 
 module.exports = router
 

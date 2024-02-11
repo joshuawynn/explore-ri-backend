@@ -3,36 +3,36 @@
 ////////////////////////////////
 
 const express = require('express')
-const {Restaurant} = require('../models')
+const {Todo} = require('../models')
 // we can use 'object de-structuring' to access just the model we need for this controller
 
-// RestaurantS INDEX ACTION
-async function index(req,res,next) {
+// TodoS INDEX ACTION
+async function restaurantIndex(req,res,next) {
 	try {
-    // get all Restaurants
-    res.json(await Restaurant.find({}));
+    // get all Todos
+    res.json(await Todo.find({category:'Restaurant'}));
   } catch (error) {
     //send error
     res.status(400).json(error);
   }
 };
 
-// RestaurantS CREATE ACTION
+// Todo CREATE ACTION
 async function create(req,res,next) {
   try {
-    // create new person
-    res.json(await Restaurant.create(req.body));
+    
+    res.json(await Todo.create(req.body));
   } catch (error) {
     //send error
-    res.status(400).json(error);
+    console.error(error); // Log the error for debugging
+    res.status(400).json({ error: error.message }); // Send back a more descriptive error
   }
-};
-
-// Restaurants SHOW ACTION
+}
+// Todos SHOW ACTION
 async function show(req,res,next) {
     try {
-        // send one person
-        res.json(await Restaurant.findById(req.params.id));
+       
+        res.json(await Todo.findById(req.params.id));
       } catch (error) {
         //send error
         res.status(400).json(error);
@@ -40,23 +40,23 @@ async function show(req,res,next) {
 };
 
 
-// Restaurants DESTROY ACTION
+// Todos DESTROY ACTION
 async function destroy(req,res,next) {
     try {
-      // delete Restaurants by ID
-      res.json(await Restaurant.findByIdAndDelete(req.params.id));
+      // delete Todos by ID
+      res.json(await Todo.findByIdAndDelete(req.params.id));
     } catch (error) {
       //send error
       res.status(400).json(error);
     }
   };
   
-  // Restaurants UPDATE ACTION
+  // Todos UPDATE ACTION
   async function update(req,res,next) {
     try {
-      // update Restaurants by ID, provide the form data, and return the updated document.
+      // update Todos by ID, provide the form data, and return the updated document.
       res.json(
-        await Restaurant.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        await Todo.findByIdAndUpdate(req.params.id, req.body, {new:true})
       );
     } catch (error) {
       //send error
@@ -66,7 +66,7 @@ async function destroy(req,res,next) {
 
 // EXPORT Controller Action
 module.exports = {
-	index,
+	restaurantIndex,
 	create,
 	show,
     delete: destroy,
