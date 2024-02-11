@@ -1,5 +1,6 @@
 
-
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const ReviewSchema = new Schema({
     summary: { type: String, required: true},
@@ -9,21 +10,6 @@ const ReviewSchema = new Schema({
         max: 5,
         default: 5
     },
-    restaurant: {
-        type: Schema.Types.ObjectId,
-        ref: 'Restaurant', 
-        required: false
-    },
-    activity: {
-        type: Schema.Types.ObjectId,
-        ref: 'Activity', 
-        required: false
-    },
-    destination: {
-        type: Schema.Types.ObjectId,
-        ref: 'Destination', 
-        required: false
-    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -32,3 +18,5 @@ const ReviewSchema = new Schema({
 }, {
     timestamps: true
 });
+
+module.exports = ReviewSchema

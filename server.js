@@ -4,9 +4,9 @@ const cors = require('cors')
 
 const AuthRouter = require('./routes/AuthRouter')
 const PostRouter = require('./routes/PostRouter')
-const restaurantsRouter = require('./routes/restaurants')
-const destinationsRouter = require('./routes/destinations')
-const activitiesRouter = require('./routes/activities')
+const TodosRouter = require('./routes/todos')
+const ReviewsRouter = require('./routes/Reviews')
+
 
 const PORT = process.env.PORT || 3001
 
@@ -21,9 +21,9 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/auth', AuthRouter)
 app.use('/posts', PostRouter)
-app.use('/restaurants', restaurantsRouter)
-app.use('/destinations', destinationsRouter)
-app.use('/activities', activitiesRouter)
+app.use('/todos', TodosRouter)
+app.use('/reviews', ReviewsRouter)
+
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
