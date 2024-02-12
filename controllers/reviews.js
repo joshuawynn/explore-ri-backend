@@ -1,5 +1,5 @@
 const express = require('express');
-const { Review } = require('../models/Index'); // Ensure Review is correctly imported
+const { Review, Todo } = require('../models/Index'); // Ensure Review is correctly imported
 
 // Reviews INDEX ACTION to list all reviews
 async function index(req, res) {
@@ -13,8 +13,15 @@ async function index(req, res) {
 
 // Reviews CREATE ACTION to add a new review
 async function create(req, res) {
+
+  req.body.user = req.params.userId
+  console.log(req.body)
     try {
         const newReview = await Review.create(req.body);
+        const todo = await Todo.findById(req.params.todoId)
+        todo.reviews.push(newReview._id)
+        console.log(todo)
+        todo.save()
         res.json(newReview);
     } catch (error) {
         console.error(error); // Log the error for debugging

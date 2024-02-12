@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 const userSchema = require('./User')
 const postSchema = require('./Post')
-const todoSchema = require('./Todo')
+const TodoSchema = require('./Todo')
 const ReviewSchema = require('./Review')
 
 const User = mongoose.model('User', userSchema)
 const Post = mongoose.model('Post', postSchema)
-const Todo = mongoose.model('Todo', todoSchema)
-const Review = mongoose.model('Review', todoSchema)
+const Todo = mongoose.model('Todo', TodoSchema)
+const Review = mongoose.model('Review', ReviewSchema)
 
 
 module.exports = {
