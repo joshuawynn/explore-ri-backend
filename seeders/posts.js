@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const falso = require('@ngneat/falso')
-const { Post } = require('../models')
+const { Post } = require('./models')
 require('dotenv').config()
 
 mongoose

@@ -4,6 +4,7 @@
 
 const express = require('express');
 const { Todo } = require('../models/Index'); // Ensure Todo is correctly imported
+const Reviews = require('./Reviews');
 
 // Todos INDEX ACTION with Category Filtering
 async function todosIndex(req, res) {
@@ -15,8 +16,8 @@ async function todosIndex(req, res) {
             // Construct a query object based on the category if it's valid
             query.category = category;
         }
-        // Find Todos based on the constructed query object
-        const todos = await Todo.find(query);
+        // Find Todos based on the constructed query object and populate reviews
+        const todos = await Todo.find(query).populate('reviews');
         res.json(todos);
     } catch (error) {
         // Send error
@@ -38,7 +39,7 @@ async function create(req, res) {
 // Todos SHOW ACTION
 async function show(req, res) {
     try {
-        const todo = await Todo.findById(req.params.id);
+        const todo = await Todo.findById(req.params.id).populate("reviews");
         res.json(todo);
     } catch (error) {
         res.status(400).json(error);

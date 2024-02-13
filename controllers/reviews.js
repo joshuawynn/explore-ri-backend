@@ -17,10 +17,12 @@ async function create(req, res) {
   req.body.user = req.params.userId
   console.log(req.body)
     try {
+      console.log(req.params)
         const newReview = await Review.create(req.body);
         const todo = await Todo.findById(req.params.todoId)
         todo.reviews.push(newReview._id)
         console.log(todo)
+      
         todo.save()
         res.json(newReview);
     } catch (error) {
