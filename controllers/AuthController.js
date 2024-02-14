@@ -52,20 +52,20 @@ const Register = async (req, res) => {
 
   const UpdatePassword = async (req, res) => {
     try {
-      const { email, currentPassword, newPassword, confirmPassword } = req.body;
+      const { email, newPassword, confirmPassword } = req.body;
   
       // Ensures the new password and confirmation match
       if (newPassword !== confirmPassword) {
         return res.status(400).send({ status: 'Error', msg: 'New passwords do not match!' });
       }
   
-      const user = await User.findOne({ email });
-      console.log(user.passwordDigest, currentPassword)
-      // Verifies current password
-      const isMatch = await middleware.comparePassword(user.passwordDigest, currentPassword);
-      if (!isMatch) {
-        return res.status(401).send({ status: 'Error', msg: 'Current password is incorrect!' });
-      }
+       const user = await User.findOne({ email });
+      // console.log(user.passwordDigest, currentPassword)
+      // // Verifies current password
+      // const isMatch = await middleware.comparePassword(user.passwordDigest, currentPassword);
+      // if (!isMatch) {
+      //   return res.status(401).send({ status: 'Error', msg: 'Current password is incorrect!' });
+      // }
   
       // Hashes and updates the new password
       const newPasswordDigest = await middleware.hashPassword(newPassword);
