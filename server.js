@@ -4,7 +4,7 @@ const cors = require('cors')
 
 const AuthRouter = require('./routes/AuthRouter')
 const PostRouter = require('./routes/PostRouter')
-const TodosRouter = require('./routes/todos')
+const TodosRouter = require('./routes/Todos')
 const ReviewsRouter = require('./routes/Reviews')
 
 
