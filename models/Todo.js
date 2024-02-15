@@ -7,6 +7,7 @@ const TodoSchema = new Schema ({
     location:  String,
     picture: String,
     description: String,
+    address: String,
     reviews:[{type: Schema.Types.ObjectId, ref: "Review"}]
 }, {timestamps: true})
 
