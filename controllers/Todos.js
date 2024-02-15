@@ -3,7 +3,7 @@
 ////////////////////////////////
 
 const express = require('express');
-const { Todo } = require('../models/Index'); // Ensure Todo is correctly imported
+const { Todo } = require('../models'); // Ensure Todo is correctly imported
 const Reviews = require('./Reviews');
 
 // Todos INDEX ACTION with Category Filtering
