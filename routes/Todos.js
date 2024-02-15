@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const todosController = require('../controllers/todos'); // Adjust the path as necessary
+const todosController = require('../controllers/Todos'); // Adjust the path as necessary
 
 // Route to get all Todos or filter by category
 // Accessible via: GET /todos and GET /todos?category=Restaurant (or Activity or Destination)
