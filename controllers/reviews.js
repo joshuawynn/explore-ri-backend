@@ -1,5 +1,5 @@
 const express = require('express');
-const { Review, Todo } = require('../models/Index'); // Ensure Review is correctly imported
+const { Review, Todo } = require('../models/'); // Ensure Review is correctly imported
 
 // Reviews INDEX ACTION to list all reviews
 async function index(req, res) {
