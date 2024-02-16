@@ -60,12 +60,12 @@ const Register = async (req, res) => {
       }
   
        const user = await User.findOne({ email });
-      // console.log(user.passwordDigest, currentPassword)
-      // // Verifies current password
-      // const isMatch = await middleware.comparePassword(user.passwordDigest, currentPassword);
-      // if (!isMatch) {
-      //   return res.status(401).send({ status: 'Error', msg: 'Current password is incorrect!' });
-      // }
+      console.log(user.passwordDigest, currentPassword)
+      // Verifies current password
+      const isMatch = await middleware.comparePassword(user.passwordDigest, currentPassword);
+      if (!isMatch) {
+        return res.status(401).send({ status: 'Error', msg: 'Current password is incorrect!' });
+      }
   
       // Hashes and updates the new password
       const newPasswordDigest = await middleware.hashPassword(newPassword);

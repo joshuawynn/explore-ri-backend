@@ -1,14 +1,10 @@
-///////////////////////////////
-// DEPENDENCIES
-////////////////////////////////
-
 const express = require('express');
-const { Todo } = require('../models'); // Ensure Todo is correctly imported
+const { Todo } = require('../models'); 
 
 
 // Todos INDEX ACTION with Category Filtering
 async function todosIndex(req, res) {
-    const { category } = req.query; // Extract 'category' from query parameters
+    const { category } = req.query; 
 
     try {
         let query = {};
@@ -68,7 +64,7 @@ async function update(req, res) {
 
 // EXPORT Controller Actions
 module.exports = {
-    index: todosIndex, // Renamed to a more generic 'index' function
+    index: todosIndex, 
     create,
     show,
     delete: destroy,
